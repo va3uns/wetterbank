@@ -491,9 +491,9 @@
     if (e.key === "ArrowRight") { go(1); e.preventDefault(); }
     if (e.key === "ArrowLeft") { go(-1); e.preventDefault(); }
   });
-  /* Auto-advance every 15 seconds, but only while the carousel is on screen and nobody is using it.
+  /* Auto-advance every 10 seconds, but only while the carousel is on screen and nobody is using it.
      Hover, focus, a touch or the pause button stop it; reduced motion turns it off. */
-  var DELAY = 15000, timer = null, visible = false, paused = false, holding = false;
+  var DELAY = 10000, timer = null, visible = false, paused = false, holding = false;
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   var pb = document.querySelector(".fame-play");
   function schedule() {
@@ -506,7 +506,7 @@
   stage.addEventListener("pointerleave", function (e) { if (e.pointerType === "mouse") { holding = false; schedule(); } });
   stage.addEventListener("focusin", function () { holding = true; schedule(); });
   stage.addEventListener("focusout", function () { holding = false; schedule(); });
-  row.addEventListener("pointerdown", function () { schedule(); });           /* any manual move restarts the 15 s */
+  row.addEventListener("pointerdown", function () { schedule(); });           /* any manual move restarts the 10 s */
   document.querySelectorAll(".fame-btn").forEach(function (b) { b.addEventListener("click", schedule); });
   document.addEventListener("visibilitychange", schedule);
   if ("IntersectionObserver" in window) {
