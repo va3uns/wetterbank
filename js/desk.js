@@ -491,5 +491,35 @@
     if (e.key === "ArrowRight") { go(1); e.preventDefault(); }
     if (e.key === "ArrowLeft") { go(-1); e.preventDefault(); }
   });
+  /* Auto-advance every 15 seconds, but only while the carousel is on screen and nobody is using it.
+     Hover, focus, a touch or the pause button stop it; reduced motion turns it off. */
+  var DELAY = 15000, timer = null, visible = false, paused = false, holding = false;
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var pb = document.querySelector(".fame-play");
+  function schedule() {
+    clearTimeout(timer);
+    if (reduce || paused || holding || !visible || document.hidden) return;
+    timer = setTimeout(function () { go(1); schedule(); }, DELAY);
+  }
+  var stage = document.getElementById("famous");
+  stage.addEventListener("pointerenter", function (e) { if (e.pointerType === "mouse") { holding = true; schedule(); } });
+  stage.addEventListener("pointerleave", function (e) { if (e.pointerType === "mouse") { holding = false; schedule(); } });
+  stage.addEventListener("focusin", function () { holding = true; schedule(); });
+  stage.addEventListener("focusout", function () { holding = false; schedule(); });
+  row.addEventListener("pointerdown", function () { schedule(); });           /* any manual move restarts the 15 s */
+  document.querySelectorAll(".fame-btn").forEach(function (b) { b.addEventListener("click", schedule); });
+  document.addEventListener("visibilitychange", schedule);
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(function (es) { visible = es[0].isIntersecting; schedule(); }, { threshold: .5 }).observe(row);
+  } else { visible = true; }
+  if (pb) {
+    if (reduce) { pb.hidden = true; }
+    pb.addEventListener("click", function () {
+      paused = !paused;
+      pb.setAttribute("aria-pressed", String(paused));
+      pb.textContent = paused ? pb.dataset.play : pb.dataset.pause;
+      schedule();
+    });
+  }
   render();
 })();
