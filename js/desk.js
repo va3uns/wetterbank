@@ -450,25 +450,46 @@
   updateIdle();
 })();
 
-/* Famous benches: arrow buttons scroll the row one card at a time. */
+/* Famous benches: a looping carousel. The current bench sits in front, its neighbours peek out at the sides. */
 (function () {
   "use strict";
   var row = document.querySelector(".fame");
   if (!row) return;
-  var btns = document.querySelectorAll(".fame-btn");
-  function step() { var c = row.querySelector(".fame-card"); return c ? c.getBoundingClientRect().width + 12 : 280; }
-  function update() {
-    var max = row.scrollWidth - row.clientWidth - 2;
-    btns.forEach(function (b) { b.disabled = b.dataset.dir === "-1" ? row.scrollLeft <= 2 : row.scrollLeft >= max; });
+  var cards = Array.prototype.slice.call(row.querySelectorAll(".fame-card"));
+  var n = cards.length, cur = 0;
+  var count = document.querySelector(".fame-count");
+  var de = (document.documentElement.lang || "").slice(0, 2) === "de";
+  function render() {
+    cards.forEach(function (c, i) {
+      var o = ((i - cur) % n + n) % n; if (o > n / 2) o -= n;   /* -2..3 for six cards */
+      var a = Math.abs(o);
+      c.style.setProperty("--o", o); c.style.setProperty("--a", Math.min(a, 2));
+      c.classList.toggle("far", a > 1); c.classList.toggle("side", a === 1);
+      c.setAttribute("aria-hidden", a === 0 ? "false" : "true");
+      if ("inert" in c) c.inert = a > 1;
+    });
+    if (count) count.textContent = (cur + 1) + (de ? " von " : " of ") + n;
   }
-  btns.forEach(function (b) {
-    b.addEventListener("click", function () { row.scrollBy({ left: step() * Number(b.dataset.dir) }); });
+  function go(d) { cur = ((cur + d) % n + n) % n; render(); }
+  document.querySelectorAll(".fame-btn").forEach(function (b) { b.addEventListener("click", function () { go(Number(b.dataset.dir)); }); });
+  /* tap a side card to bring it to the front */
+  row.addEventListener("click", function (e) {
+    if (swiped) { swiped = false; return; }
+    var c = e.target.closest(".fame-card.side"); if (!c) return;
+    go(Number(c.style.getPropertyValue("--o")));
   });
-  row.addEventListener("keydown", function (e) {
-    if (e.key === "ArrowRight") { row.scrollBy({ left: step() }); e.preventDefault(); }
-    if (e.key === "ArrowLeft") { row.scrollBy({ left: -step() }); e.preventDefault(); }
+  /* swipe */
+  var x0 = null, swiped = false;
+  row.addEventListener("pointerdown", function (e) { x0 = e.clientX; });
+  row.addEventListener("pointerup", function (e) {
+    if (x0 === null) return; var dx = e.clientX - x0; x0 = null;
+    if (Math.abs(dx) > 40) { swiped = true; go(dx < 0 ? 1 : -1); setTimeout(function () { swiped = false; }, 0); }
   });
-  row.addEventListener("scroll", update, { passive: true });
-  window.addEventListener("resize", update);
-  update();
+  row.addEventListener("pointercancel", function () { x0 = null; });
+  /* arrow keys while the section has focus */
+  document.getElementById("famous").addEventListener("keydown", function (e) {
+    if (e.key === "ArrowRight") { go(1); e.preventDefault(); }
+    if (e.key === "ArrowLeft") { go(-1); e.preventDefault(); }
+  });
+  render();
 })();

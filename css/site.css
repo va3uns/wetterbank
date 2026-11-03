@@ -140,20 +140,26 @@ footer a:hover{color:var(--fg)}
 
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
-/* Famous benches carousel */
+/* Famous benches: one bench in front, the previous and next peeking at the sides, looping */
+html{scroll-padding-top:24px}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+.jump-link{color:var(--mute)}
 .fame-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
 .fame-head .sub{margin:0}
 .fame-nav{display:flex;gap:8px;flex:none}
 .fame-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--bg);color:var(--fg);font:500 16px/1 var(--font);cursor:pointer}
 .fame-btn:hover{background:var(--panel)}
-.fame-btn[disabled]{opacity:.35;cursor:default}
-.fame{list-style:none;margin:20px 0 0;padding:0 0 6px;display:grid;grid-auto-flow:column;grid-auto-columns:min(78%,280px);gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
-.fame::-webkit-scrollbar{display:none}
-.fame:focus-visible{outline:2px solid var(--fg);outline-offset:4px;border-radius:12px}
-.fame-card{scroll-snap-align:start;border:1px solid var(--line);border-radius:12px;padding:12px 14px 14px;background:var(--bg);display:flex;flex-direction:column;gap:6px}
+.fame{list-style:none;margin:24px 0 0;padding:2px 0;display:grid;position:relative;overflow:hidden;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.fame-card{grid-area:1/1;justify-self:center;width:min(64%,360px);border:1px solid var(--line);border-radius:12px;padding:12px 14px 14px;background:var(--bg);display:flex;flex-direction:column;gap:6px;
+  transform:translateX(calc(var(--o,0) * 82%)) scale(calc(1 - var(--a,0) * .14));opacity:calc(1 - var(--a,0) * .55);z-index:calc(10 - var(--a,0));transition:transform .45s cubic-bezier(.2,.7,.2,1),opacity .45s}
+.fame-card.far{opacity:0;pointer-events:none}
+.fame-card.side{cursor:pointer}
+.fame-card.side *{pointer-events:none}
 .fame-pic{display:block;width:100%;height:auto;margin:0 0 4px}
 .fame-t{margin:0;font-size:14px}.fame-t span{color:var(--mute)}
 .fame-d{margin:0;font-size:13px;color:var(--mute);line-height:1.5}
 .fame-s{margin:auto 0 0;padding-top:6px;font-size:13px;line-height:1.5}
 .fame-s span{display:block;color:var(--accent);font-size:12px}
-@media (prefers-reduced-motion:no-preference){.fame{scroll-behavior:smooth}}
+.fame-count{margin:14px 0 0;text-align:center;font-size:12.5px;color:var(--mute);font-variant-numeric:tabular-nums}
+@media (max-width:520px){.fame-card{width:74%}}
+@media (prefers-reduced-motion:reduce){.fame-card{transition:none}}
