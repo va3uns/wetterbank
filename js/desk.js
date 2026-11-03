@@ -449,3 +449,26 @@
   what.addEventListener("blur", updateIdle);
   updateIdle();
 })();
+
+/* Famous benches: arrow buttons scroll the row one card at a time. */
+(function () {
+  "use strict";
+  var row = document.querySelector(".fame");
+  if (!row) return;
+  var btns = document.querySelectorAll(".fame-btn");
+  function step() { var c = row.querySelector(".fame-card"); return c ? c.getBoundingClientRect().width + 12 : 280; }
+  function update() {
+    var max = row.scrollWidth - row.clientWidth - 2;
+    btns.forEach(function (b) { b.disabled = b.dataset.dir === "-1" ? row.scrollLeft <= 2 : row.scrollLeft >= max; });
+  }
+  btns.forEach(function (b) {
+    b.addEventListener("click", function () { row.scrollBy({ left: step() * Number(b.dataset.dir) }); });
+  });
+  row.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowRight") { row.scrollBy({ left: step() }); e.preventDefault(); }
+    if (e.key === "ArrowLeft") { row.scrollBy({ left: -step() }); e.preventDefault(); }
+  });
+  row.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
+  update();
+})();

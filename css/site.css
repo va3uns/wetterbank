@@ -139,3 +139,26 @@ footer a:hover{color:var(--fg)}
 @media (max-width:520px){.ab{grid-template-columns:1fr;gap:20px}}
 
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* Famous benches carousel */
+.fame-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
+.fame-head .sub{margin:0}
+.fame-nav{display:flex;gap:8px;flex:none}
+.fame-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--bg);color:var(--fg);font:500 16px/1 var(--font);cursor:pointer}
+.fame-btn:hover{background:var(--panel)}
+.fame-btn[disabled]{opacity:.35;cursor:default}
+.fame{list-style:none;margin:20px 0 0;padding:0 0 6px;display:grid;grid-auto-flow:column;grid-auto-columns:min(78%,280px);gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
+.fame::-webkit-scrollbar{display:none}
+.fame:focus-visible{outline:2px solid var(--fg);outline-offset:4px;border-radius:12px}
+.fame-card{scroll-snap-align:start;border:1px solid var(--line);border-radius:12px;padding:12px 14px 14px;background:var(--bg);display:flex;flex-direction:column;gap:6px}
+.fame-pic{display:block;width:100%;height:auto;margin:0 0 4px}
+.fame-t{margin:0;font-size:14px}.fame-t span{color:var(--mute)}
+.fame-d{margin:0;font-size:13px;color:var(--mute);line-height:1.5}
+.fame-s{margin:auto 0 0;padding-top:6px;font-size:13px;line-height:1.5}
+.fame-s span{display:block;color:var(--accent);font-size:12px}
+.fame-q{margin:24px 0 0;padding:0 0 0 14px;border-left:2px solid var(--accent)}
+.fame-q p{margin:0;font-size:14.5px}
+.fame-q{margin-left:0;margin-right:0}
+.fame-q .fame-src{margin:6px 0 0;font-size:12.5px;color:var(--mute)}
+.fame-q .fame-src a{color:inherit}
+@media (prefers-reduced-motion:no-preference){.fame{scroll-behavior:smooth}}
