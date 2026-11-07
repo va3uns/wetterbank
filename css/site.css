@@ -183,3 +183,7 @@ html{scroll-padding-top:24px}
 .mode-dl dd{margin:0}
 @media (max-width:560px){.mode-dl div{grid-template-columns:1fr;gap:2px}}
 .mode-sum{margin:32px 0 0;padding:14px 16px;border-left:2px solid var(--fg);background:var(--soft);font-size:14px;line-height:1.5}
+.why-form{margin:0 0 28px;padding:16px 18px;border:1px solid var(--line);border-radius:12px}
+.why-form>p{margin:0;font-size:14.5px;line-height:1.55}
+.why-form .mode-dl{margin-top:14px}
+@media (max-width:560px){.why-form{padding:14px}}
