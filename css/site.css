@@ -172,3 +172,9 @@ html{scroll-padding-top:24px}
 .fame-outro p{margin:0 0 10px;font-size:14px;color:var(--mute)}
 .fame-outro .fame-src{color:inherit;font-size:12.5px;white-space:nowrap}
 .fame-outro .fame-quip{color:var(--fg)}
+.mode-dl{margin:16px 0 0;display:grid;gap:10px}
+.mode-dl div{display:grid;grid-template-columns:10.5rem 1fr;gap:12px;font-size:14px;line-height:1.55}
+.mode-dl dt{color:var(--mute)}
+.mode-dl dd{margin:0}
+@media (max-width:560px){.mode-dl div{grid-template-columns:1fr;gap:2px}}
+.mode-sum{margin:32px 0 0;padding:14px 16px;border-left:2px solid var(--fg);background:var(--soft);font-size:14px;line-height:1.5}
