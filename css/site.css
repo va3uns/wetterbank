@@ -119,10 +119,12 @@ footer a:hover{color:var(--fg)}
   .pn .v1{animation-delay:.18s}.pn .v2{animation-delay:.36s}
   .pn .marks{animation:pn-pulse 2.2s ease-in-out infinite}
   .pn .fly{animation:pn-bob 2.4s ease-in-out infinite}
+  .pn .rays{animation:pn-spin 30s linear infinite}
 }
 @keyframes pn-rain{0%{transform:translateY(-4px);opacity:0}30%{opacity:1}100%{transform:translateY(8px);opacity:0}}
 @keyframes pn-dot{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-3px)}}
 @keyframes pn-pulse{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes pn-spin{to{transform:rotate(360deg)}}
 @keyframes pn-bob{0%,100%{translate:0 0}50%{translate:0 -4px}}
 
 .tk .ppl{fill:none;stroke:var(--bg);stroke-linecap:round}
