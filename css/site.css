@@ -178,6 +178,7 @@ html{scroll-padding-top:24px}
 .fame-outro .fame-quip{color:var(--fg)}
 
 .after{margin:20px 0 0;font-size:14.5px;color:var(--mute)}
+.after+.after{margin-top:10px}
 .hero-by{margin:18px 0 0;font-size:14px;line-height:1.5}
 .subq+.ab{margin-top:32px}
 
