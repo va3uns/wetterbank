@@ -10,9 +10,9 @@ A design fiction from Düsseldorf asking how autonomous systems will shape our e
 
 | Path | What it is |
 |---|---|
-| `index.html` | Home: the fiction, the complaint form, three modes, the question |
-| `documentation.html` | The research: context, the question, planned field studies, precedents, log, references |
-| `de/` | German versions of the home, documentation and privacy pages (English is the default) |
+| `index.html` | Home: the question, the fiction and its artefacts with numbered notes, the complaint form, the internal report, the planned studies |
+| `documentation.html` | The proposal: abstract, question, approach, the fiction, planned studies, ethics and limits, precedents, context, references |
+| `de/` | German versions of the home, proposal and privacy pages (English is the default) |
 | `css/site.css` | Shared styles |
 | `css/themes.css`, `js/theme.js` | Season themes (System, Spring, Summer, Autumn, Winter), remembered per device |
 | `js/desk.js` | The complaint form, in English and German (picked by the page language) |

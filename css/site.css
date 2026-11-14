@@ -143,7 +143,6 @@ footer a:hover{color:var(--fg)}
 .ab{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:32px 0 0}
 .ab figcaption{font-size:13px;line-height:1.45;color:var(--mute)}
 .ab figcaption strong{display:block;color:var(--fg);font-weight:600;margin:0 0 2px}
-.ab-note{margin:20px 0 0;padding:14px 16px;border-left:2px solid var(--fg);background:var(--soft);font-size:14px;line-height:1.5}
 @media (max-width:520px){.ab{grid-template-columns:1fr;gap:20px}}
 
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -177,13 +176,52 @@ html{scroll-padding-top:24px}
 .fame-outro p{margin:0 0 10px;font-size:14px;color:var(--mute)}
 .fame-outro .fame-src{color:inherit;font-size:12.5px;white-space:nowrap}
 .fame-outro .fame-quip{color:var(--fg)}
-.mode-dl{margin:16px 0 0;display:grid;gap:10px}
-.mode-dl div{display:grid;grid-template-columns:10.5rem 1fr;gap:12px;font-size:14px;line-height:1.55}
-.mode-dl dt{color:var(--mute)}
-.mode-dl dd{margin:0}
-@media (max-width:560px){.mode-dl div{grid-template-columns:1fr;gap:2px}}
-.mode-sum{margin:32px 0 0;padding:14px 16px;border-left:2px solid var(--fg);background:var(--soft);font-size:14px;line-height:1.5}
-.why-form{margin:0 0 28px;padding:16px 18px;border:1px solid var(--line);border-radius:12px}
-.why-form>p{margin:0;font-size:14.5px;line-height:1.55}
-.why-form .mode-dl{margin-top:14px}
-@media (max-width:560px){.why-form{padding:14px}}
+
+/* Notes: the researcher's voice beside the artefacts. In the margin on wide screens, under the artefact on small ones. */
+.wn-main{min-width:0}
+.wn-main>:first-child{margin-top:0}
+.subq+.wn{margin-top:32px}
+.notes{display:grid;gap:10px;margin:16px 0 0}
+.note{margin:0;padding:9px 0 0;border-top:1px solid var(--line);font-size:13px;line-height:1.5;color:var(--mute)}
+.note b{color:var(--fg);font-weight:600;margin-right:8px;font-variant-numeric:tabular-nums}
+.note i{font-style:normal;color:var(--fg)}
+.key{margin:20px 0 0;font-size:13px;color:var(--mute)}
+.hero-by{margin:18px 0 0;font-size:14px;line-height:1.5}
+@media (min-width:1180px){
+  .wn{display:grid;grid-template-columns:100% 236px;column-gap:40px;align-items:start}
+  .notes{margin:0}
+}
+
+/* Internal report: the less friendly artefact */
+.memo{border:1px solid var(--fg);border-radius:4px;padding:16px 18px;font-size:13.5px;line-height:1.5}
+.memo-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 12px;padding:0 0 10px;border-bottom:1px solid var(--line);font-size:12px;letter-spacing:.6px;text-transform:uppercase;color:var(--mute)}
+.memo-t{margin:12px 0 8px;font-weight:600}
+.memo dl{margin:0}
+.memo dl div{display:flex;justify-content:space-between;gap:16px;padding:6px 0;border-bottom:1px dotted var(--line)}
+.memo dl .in dt{padding-left:18px;color:var(--mute)}
+.memo dd{margin:0;max-width:55%;text-align:right;font-variant-numeric:tabular-nums}
+.memo-rec{margin:14px 0 0;font-weight:600}
+
+/* Studies: what is real, what is staged */
+.mx{margin:0}
+.mx table{width:100%;table-layout:fixed;border-collapse:collapse;font-size:13.5px;line-height:1.4}
+.mx thead th:not(:first-child){width:64px}
+.mx thead th{padding:0 4px 8px;border-bottom:1px solid var(--line);font-size:12px;font-weight:400;color:var(--mute);text-align:center}
+.mx thead th:first-child{text-align:left}
+.mx tbody tr{border-bottom:1px solid var(--line)}
+.mx tbody th{position:relative;padding:10px 8px 10px 24px;text-align:left;font-weight:400}
+.mx-n{position:absolute;left:0;color:var(--mute);font-variant-numeric:tabular-nums}
+.mx-name{display:block;font-weight:600;overflow-wrap:anywhere;hyphens:auto}
+.mx-name a{text-decoration-color:var(--line)}
+.mx-how{display:block;font-size:12.5px;color:var(--mute);overflow-wrap:anywhere}
+.mx td{width:64px;text-align:center;vertical-align:middle}
+.dot{display:inline-block;width:12px;height:12px;border:1.5px solid var(--fg);border-radius:50%;vertical-align:middle}
+.dot.r{background:var(--fg)}
+.dot.h{background:linear-gradient(90deg,var(--fg) 50%,transparent 50%)}
+.dot.n{width:10px;height:0;border:0;border-top:1.5px solid var(--mute);border-radius:0;opacity:.5}
+.mx figcaption{margin:12px 0 0}
+.mx-legend{display:flex;flex-wrap:wrap;gap:6px 18px}
+.mx-legend span{display:inline-flex;align-items:center;gap:7px}
+.mx-status{display:block;margin:8px 0 0}
+.closing .mx{margin-top:28px}
+@media (max-width:420px){.mx td,.mx thead th:not(:first-child){width:48px}.mx thead th{font-size:11px;padding:0 2px 8px}.memo{padding:14px}}
