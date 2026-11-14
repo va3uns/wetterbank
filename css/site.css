@@ -177,20 +177,9 @@ html{scroll-padding-top:24px}
 .fame-outro .fame-src{color:inherit;font-size:12.5px;white-space:nowrap}
 .fame-outro .fame-quip{color:var(--fg)}
 
-/* Notes: the researcher's voice beside the artefacts. In the margin on wide screens, under the artefact on small ones. */
-.wn-main{min-width:0}
-.wn-main>:first-child{margin-top:0}
-.subq+.wn{margin-top:32px}
-.notes{display:grid;gap:10px;margin:16px 0 0}
-.note{margin:0;padding:9px 0 0;border-top:1px solid var(--line);font-size:13px;line-height:1.5;color:var(--mute)}
-.note b{color:var(--fg);font-weight:600;margin-right:8px;font-variant-numeric:tabular-nums}
-.note i{font-style:normal;color:var(--fg)}
-.key{margin:20px 0 0;font-size:13px;color:var(--mute)}
+.after{margin:20px 0 0;font-size:14.5px;color:var(--mute)}
 .hero-by{margin:18px 0 0;font-size:14px;line-height:1.5}
-@media (min-width:1180px){
-  .wn{display:grid;grid-template-columns:100% 236px;column-gap:40px;align-items:start}
-  .notes{margin:0}
-}
+.subq+.ab{margin-top:32px}
 
 /* Internal report: the less friendly artefact */
 .memo{border:1px solid var(--fg);border-radius:4px;padding:16px 18px;font-size:13.5px;line-height:1.5}
