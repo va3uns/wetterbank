@@ -211,9 +211,9 @@ html{scroll-padding-top:24px}
 .mx tbody tr{border-bottom:1px solid var(--line)}
 .mx tbody th{position:relative;padding:10px 8px 10px 24px;text-align:left;font-weight:400}
 .mx-n{position:absolute;left:0;color:var(--mute);font-variant-numeric:tabular-nums}
-.mx-name{display:block;font-weight:600;overflow-wrap:anywhere;hyphens:auto}
+.mx-name{display:block;font-weight:600;overflow-wrap:break-word;hyphens:manual}
 .mx-name a{text-decoration-color:var(--line)}
-.mx-how{display:block;font-size:12.5px;color:var(--mute);overflow-wrap:anywhere}
+.mx-how{display:block;font-size:12.5px;color:var(--mute);overflow-wrap:break-word}
 .mx td{width:64px;text-align:center;vertical-align:middle}
 .dot{display:inline-block;width:12px;height:12px;border:1.5px solid var(--fg);border-radius:50%;vertical-align:middle}
 .dot.r{background:var(--fg)}
@@ -224,4 +224,4 @@ html{scroll-padding-top:24px}
 .mx-legend span{display:inline-flex;align-items:center;gap:7px}
 .mx-status{display:block;margin:8px 0 0}
 .closing .mx{margin-top:28px}
-@media (max-width:420px){.mx td,.mx thead th:not(:first-child){width:48px}.mx thead th{font-size:11px;padding:0 2px 8px}.memo{padding:14px}}
+@media (max-width:420px){.mx td,.mx thead th:not(:first-child){width:46px}.mx thead th{padding:0 1px 8px}.mx table{font-size:13px}.mx tbody th{padding-left:20px;padding-right:4px}.memo{padding:14px}}

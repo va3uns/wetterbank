@@ -30,3 +30,28 @@ body{transition:background-color .35s ease,color .35s ease}
 .to-top svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .to-top:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
 @media (prefers-reduced-motion:reduce){.to-top{transition:none}}
+
+/* Touch: every control is at least 44px tall on phones and other touch screens */
+@media (max-width:700px),(pointer:coarse){
+.by,.top nav a,.toc a,footer a{display:inline-flex;align-items:center;min-height:44px}
+.top{padding-top:16px;gap:0 24px}
+.top nav{gap:0 20px}
+.lang{padding:3px}
+.lang a,.top nav .lang a{min-height:38px;padding:0 13px}
+.theme select{width:44px;height:44px;padding:0}
+.theme svg{left:15px}
+.toc{gap:0 18px;padding:6px 0}
+footer{gap:0 24px}
+.f-links{gap:24px}
+.f-name,.f-copy{padding:10px 0}
+.fame-btn{width:44px;height:44px}
+.fame-play{min-height:44px;padding:0 10px}
+.live{min-height:40px;padding:0 14px 0 12px}
+.mx-name a{display:inline-block;padding:12px 0;margin:-8px 0}
+.ex .src a,.fame-src{display:inline-block;padding:12px 0;margin:-4px 0}
+.prec li p:first-child a,.page>p:last-of-type>a{display:inline-block;padding:12px 0;margin:-12px 0}
+}
+@media (max-width:380px){
+.top nav{width:100%;flex-wrap:nowrap;justify-content:space-between;gap:0 8px}
+.lang a,.top nav .lang a{padding:0 10px}
+}
