@@ -82,6 +82,17 @@ section p{max-width:62ch}
 @media (max-width:520px){.plan dl div{grid-template-columns:1fr;gap:2px}}
 .lim li{font-size:14.5px;line-height:1.55}
 .lim strong{display:block}
+.fold summary{display:flex;justify-content:space-between;align-items:baseline;gap:16px;cursor:pointer;list-style:none;padding:0 0 12px;border-bottom:1px solid var(--line)}
+.fold summary::-webkit-details-marker{display:none}
+.fold summary h2{margin:0}
+.fold[open] summary{border-bottom-color:transparent}
+.fold-hint{font-size:13px;color:var(--mute);white-space:nowrap}
+.fold-hint::after{content:"+";display:inline-block;width:1em;margin-left:6px;text-align:center}
+.fold[open] .fold-hint::after{content:"\2212"}
+.fold summary:hover .fold-hint{color:var(--fg)}
+.fold .when-open,.fold[open] .when-closed{display:none}
+.fold[open] .when-open{display:inline}
+.fold .refs{margin-top:0}
 </style>
 <link rel="stylesheet" href="../css/themes.css">
 </head>
@@ -282,8 +293,9 @@ section p{max-width:62ch}
   </section>
 
   <section id="references" aria-labelledby="references-h">
-    <h2 id="references-h"><span class="n">08</span>Literatur</h2>
-    <ul class="plain refs">
+    <details class="fold" id="refs">
+      <summary><h2 id="references-h"><span class="n">08</span>Literatur</h2><span class="fold-hint"><span class="when-closed">Alle 17 anzeigen</span><span class="when-open">Ausblenden</span></span></summary>
+      <ul class="plain refs">
       <li>Auger, J. (2012). Why Robot? Speculative design, the domestication of technology and the considered future. PhD thesis, Royal College of Art.</li>
       <li>Auger, J. (2013). Speculative design: Crafting the speculation. Digital Creativity, 24(1), 11–35.</li>
       <li>Bardzell, J. &amp; Bardzell, S. (2013). What is “critical” about critical design? CHI ’13.</li>
@@ -302,6 +314,7 @@ section p{max-width:62ch}
       <li>Whyte, W. H. (1980). The Social Life of Small Urban Spaces. Conservation Foundation.</li>
       <li>Zimmerman, J., Forlizzi, J. &amp; Evenson, S. (2007). Research through design as a method for interaction design research in HCI. CHI ’07.</li>
     </ul>
+    </details>
   </section>
 </main>
 
@@ -324,6 +337,16 @@ section p{max-width:62ch}
   }
   top();
   window.addEventListener("load", function () { top(); setTimeout(top, 60); });
+})();
+</script>
+<script>
+/* References stay folded, but open when someone follows a link to them. */
+(function () {
+  var d = document.getElementById("refs");
+  if (!d) return;
+  function check() { if (location.hash === "#references") d.open = true; }
+  check();
+  window.addEventListener("hashchange", check);
 })();
 </script>
 <script src="../js/theme.js" defer></script>
